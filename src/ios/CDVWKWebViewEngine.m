@@ -809,6 +809,11 @@ static void * KVOContext = &KVOContext;
     CDVViewController* vc = (CDVViewController*)self.viewController;
     [CDVUserAgentUtil releaseLock:vc.userAgentLockToken];
 
+    // Ignore navigation cancelled errors
+    if ([[error domain] isEqualToString: @"NSURLErrorDomain"] && [error code] == NSURLErrorCancelled) {
+        return;
+    }
+    
     NSString* message = [NSString stringWithFormat:@"Failed to load webpage with error: %@", [error localizedDescription]];
     NSLog(@"%@", message);
 
