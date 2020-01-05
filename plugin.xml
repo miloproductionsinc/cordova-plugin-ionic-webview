@@ -30,12 +30,7 @@
         <engine name="cordova" version=">=7.1.0"/>
         <engine name="cordova-ios" version=">=4.0.0-dev"/>
         <engine name="apple-ios" version=">=11.0"/>
-        <engine name="cordova-android" version=">=6.4.0"/>
 	</engines>
-
-  <js-module src="src/www/util.js" name="IonicWebView">
-      <clobbers target="Ionic.WebView"/>
-  </js-module>
 
   <!-- @custom:zenput @jira:ZP-979 removing this plugin integration for Android
   <platform name="android">
@@ -59,6 +54,10 @@
 
   <!-- ios -->
   <platform name="ios">
+    <js-module src="src/www/util.js" name="IonicWebView">
+        <clobbers target="Ionic.WebView"/>
+    </js-module>
+
     <js-module src="src/www/ios/ios-wkwebview-exec.js" name="ios-wkwebview-exec">
       <clobbers target="cordova.exec"/>
     </js-module>
